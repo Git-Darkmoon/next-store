@@ -2,11 +2,11 @@
 
 ```sh
 
-npx create-next-app@latest store
+pnpm dlx create-next-app@latest store
 ```
 
 ```sh
-npm run dev
+pnpm dev
 ```
 
 ### Remove Boilerplate
