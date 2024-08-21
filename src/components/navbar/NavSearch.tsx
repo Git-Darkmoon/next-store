@@ -28,6 +28,7 @@ function NavSearch() {
     if (!searchParams.get("search")) {
       setSearch("")
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams.get("search")])
 
   return (
