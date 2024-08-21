@@ -27,3 +27,12 @@ export const fetchAllProducts = ({ search = "" }: { search: string }) => {
     },
   })
 }
+
+export const fetchProductDetails = async (id: string) => {
+  const singleProduct = await db.product.findUnique({
+    where: {
+      id: id,
+    },
+  })
+  return singleProduct
+}
