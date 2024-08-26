@@ -3,7 +3,6 @@ import { User2Icon } from "lucide-react"
 import Image from "next/image"
 
 async function UserIcon() {
-  // const { userId } = auth()
   const user = await currentUser()
 
   const profileImage = user?.imageUrl
