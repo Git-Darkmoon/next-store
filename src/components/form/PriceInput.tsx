@@ -1,6 +1,9 @@
+// import { Prisma } from "@prisma/client"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
 
+// Alternative to use the enum value coming from prisma
+// Prisma.ProductScalarFieldEnum.price
 const name = "price"
 
 type FormInputNumberProps = {
