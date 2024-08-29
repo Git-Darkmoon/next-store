@@ -1,7 +1,27 @@
 "use server"
 
 import db from "@/utils/db"
+import { currentUser } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
+import { productSchema } from "./schemas"
+
+const getAuthUser = async () => {
+  const user = await currentUser()
+  if (!user) redirect("/")
+
+  return user
+}
+
+const renderError = (
+  error: unknown
+): {
+  message: string
+} => {
+  console.log(error)
+  return {
+    message: error instanceof Error ? error.message : "there was an error...",
+  }
+}
 
 export const fetchFeaturedProducts = async () => {
   const featuredProducts = await db.product.findMany({
@@ -45,5 +65,22 @@ export const createProductAction = async (
   prevState: any,
   formData: FormData
 ): Promise<{ message: string }> => {
-  return { message: "product created" }
+  const user = await getAuthUser()
+
+  try {
+    const rawData = Object.fromEntries(formData)
+    const validatedFields = productSchema.parse(rawData)
+
+    await db.product.create({
+      data: {
+        ...validatedFields,
+        image: "/images/heroCarousel_Img1.webp",
+        clerkId: user.id,
+      },
+    })
+
+    return { message: "product created" }
+  } catch (error) {
+    return renderError(error)
+  }
 }
