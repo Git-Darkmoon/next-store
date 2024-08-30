@@ -13,6 +13,12 @@ const getAuthUser = async () => {
   return user
 }
 
+export const getAdminUser = async () => {
+  const adminUser = await getAuthUser()
+  if (adminUser.id !== process.env.ADMIN_USER_ID) redirect("/")
+  return adminUser
+}
+
 const renderError = (
   error: unknown
 ): {
@@ -82,10 +88,19 @@ export const createProductAction = async (
         clerkId: user.id,
       },
     })
-
-    return { message: "product created" }
   } catch (error) {
     return renderError(error)
   }
   redirect("/admin/products")
+}
+
+export const fetchAdminProducts = async () => {
+  await getAdminUser()
+
+  const products = await db.product.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  })
+  return products
 }

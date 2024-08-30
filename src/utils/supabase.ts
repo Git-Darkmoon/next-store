@@ -1,7 +1,6 @@
 import { createClient } from "@supabase/supabase-js"
 
 const bucket = "main-bucket"
-// TODO: Review why in production not working.
 
 export const supabase = createClient(
   process.env.SUPABASE_URL as string,
