@@ -3,8 +3,9 @@
 import { useFormStatus } from "react-dom"
 import { Button } from "../ui/button"
 import { cn } from "@/lib/utils"
-import { ReloadIcon } from "@radix-ui/react-icons"
-import { Pencil, Trash2 } from "lucide-react"
+import { HeartFilledIcon, ReloadIcon } from "@radix-ui/react-icons"
+import { Heart, Pencil, Trash2 } from "lucide-react"
+import { SignInButton } from "@clerk/nextjs"
 
 type btnSize = "default" | "lg" | "sm"
 
@@ -67,6 +68,44 @@ export const IconButton = ({ action }: { action: actionType }) => {
       className="p-2 cursor-pointer"
     >
       {pending ? <ReloadIcon className="animate-spin" /> : renderIcon()}
+    </Button>
+  )
+}
+
+export const CardSignInButton = () => {
+  return (
+    <SignInButton mode="modal">
+      <Button
+        type="button"
+        size={"icon"}
+        variant={"outline"}
+        className="p-2 cursor-pointer"
+        asChild
+      >
+        <Heart />
+      </Button>
+    </SignInButton>
+  )
+}
+
+export const CardSubmitButton = ({ isFavorite }: { isFavorite: boolean }) => {
+  const { pending } = useFormStatus()
+  return (
+    <Button
+      type="submit"
+      disabled={pending}
+      size={"icon"}
+      variant={"outline"}
+      className="p-2 cursor-pointer"
+      asChild
+    >
+      {pending ? (
+        <ReloadIcon className="animate-spin" />
+      ) : isFavorite ? (
+        <HeartFilledIcon />
+      ) : (
+        <Heart />
+      )}
     </Button>
   )
 }
