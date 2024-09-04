@@ -1,9 +1,9 @@
 "use client"
 
-import { actionFunction } from "@/utils/types"
 import { useFormState } from "react-dom"
-import { useToast } from "../ui/use-toast"
 import { useEffect } from "react"
+import { useToast } from "@/components/ui/use-toast"
+import { actionFunction } from "@/utils/types"
 
 const initialState = {
   message: "",
@@ -23,6 +23,10 @@ function FormContainer({
       toast({ description: state.message })
     }
   }, [state])
-  return <form action={formAction}>{children}</form>
+  return (
+    <form onSubmit={() => console.log("submitting...")} action={formAction}>
+      {children}
+    </form>
+  )
 }
 export default FormContainer

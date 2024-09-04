@@ -190,15 +190,7 @@ export const updateProductImageAction = async (
   }
 }
 
-export const toggleFavoriteAction = async () => {
-  return { message: "toggle favorite action" }
-}
-
-export const fetchFavoriteId = async ({
-  productId,
-}: {
-  productId: string
-}): Promise<string | null> => {
+export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
   const user = await getAuthUser()
   const favorite = await db.favorite.findFirst({
     where: {
@@ -210,4 +202,10 @@ export const fetchFavoriteId = async ({
     },
   })
   return favorite?.id || null
+}
+
+export const toggleFavoriteAction = async () => {
+  return {
+    message: "Product added to favorites",
+  }
 }
