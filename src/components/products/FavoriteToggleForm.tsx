@@ -15,14 +15,10 @@ function FavoriteToggleForm({
   favoriteId,
 }: FavoriteToggleFormProps) {
   const pathname = usePathname()
-  const toggleAction = toggleFavoriteAction.bind(null, {
-    productId,
-    favoriteId,
-    pathname,
-  })
+  const toggleAction = toggleFavoriteAction.bind(null)
 
   return (
-    <FormContainer action={toggleAction}>
+    <FormContainer action={toggleFavoriteAction}>
       <CardSubmitButton isFavorite={!!favoriteId} />
     </FormContainer>
   )

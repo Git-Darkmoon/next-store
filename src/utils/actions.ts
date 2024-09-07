@@ -205,7 +205,11 @@ export const fetchFavoriteId = async ({ productId }: { productId: string }) => {
 }
 
 export const toggleFavoriteAction = async () => {
-  return {
-    message: "Product added to favorites",
+  try {
+    return {
+      message: "Product added to favorites",
+    }
+  } catch (error) {
+    renderError(error)
   }
 }
