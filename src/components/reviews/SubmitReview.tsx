@@ -17,11 +17,11 @@ function SubmitReview({ productId }: { productId: string }) {
   return (
     <div>
       <Button
-        size="lg"
+        size="default"
         className="capitalize"
         onClick={() => setIsReviewFormVisible((prev) => !prev)}
       >
-        {isReviewFormVisible ? "close" : "leave a review"}
+        {isReviewFormVisible ? "close" : "add a review"}
       </Button>
       {isReviewFormVisible && (
         <Card className="p-8 mt-8">
