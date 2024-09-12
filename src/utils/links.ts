@@ -12,6 +12,7 @@ export const links: NavLink[] = [
   { href: ROUTES.FAVORITES, label: "favorites" },
   { href: ROUTES.CART, label: "cart" },
   { href: ROUTES.ORDERS, label: "orders" },
+  { href: ROUTES.REVIEWS, label: "reviews" },
   { href: ADMIN_ROUTES.SALES, label: "dashboard" },
 ]
 
