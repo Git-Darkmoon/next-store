@@ -23,10 +23,6 @@ function FormContainer({
       toast({ description: state.message })
     }
   }, [state])
-  return (
-    <form onSubmit={() => console.log("submitting...")} action={formAction}>
-      {children}
-    </form>
-  )
+  return <form action={formAction}>{children}</form>
 }
 export default FormContainer

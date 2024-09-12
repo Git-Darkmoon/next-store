@@ -5,7 +5,6 @@ import ReviewCard from "./ReviewCard"
 
 async function ProductReviews({ productId }: { productId: string }) {
   const reviews = await fetchProductReviews(productId)
-  console.log(reviews)
 
   if (reviews.length === 0)
     return (
