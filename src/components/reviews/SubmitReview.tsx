@@ -17,6 +17,7 @@ function SubmitReview({ productId }: { productId: string }) {
   return (
     <div>
       <Button
+        variant="secondary"
         size="default"
         className="capitalize"
         onClick={() => setIsReviewFormVisible((prev) => !prev)}
