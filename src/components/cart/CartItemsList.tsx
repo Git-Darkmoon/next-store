@@ -1,3 +1,5 @@
+"use client"
+
 import { Card } from "@/components/ui/card"
 import { FirstColumn, SecondColumn, FourthColumn } from "./CartItemColumns"
 import ThirdColumn from "./ThirdColumn"
@@ -26,7 +28,7 @@ function CartItemsList({ cartItems }: { cartItems: CartItemWithProduct[] }) {
               company={company}
               productId={productId}
             />
-            {/* <ThirdColumn id={id} quantity={amount} /> */}
+            <ThirdColumn id={id} quantity={amount} />
             <FourthColumn price={price} />
           </Card>
         )
